@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
   deleted: true,
   data: new SlashCommandBuilder()
-    .setName('mod')
+    .setName('ustaw-nazwę')
     .setDescription('Pong!'),
 
   run: ({ interaction, client, handler }) => {
