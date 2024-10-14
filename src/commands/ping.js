@@ -3,11 +3,11 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
   deleted: true,
   data: new SlashCommandBuilder()
-    .setName('mod')
-    .setDescription('Pong!'),
+    .setName('ping')
+    .setDescription('pong!'),
 
   run: ({ interaction, client, handler }) => {
     
-    interaction.reply(`Pong! ${client.ws.ping}ms`);
+    interaction.reply(`pong! ${client.ws.ping}ms`);
   },
 };
