@@ -20,6 +20,7 @@ module.exports = {
     if (gradeclass === '1') { gradecolor = '#ffefca' }
     if (gradeclass === '2') { gradecolor = '#fff581' }
     if (gradeclass === '3') { gradecolor = '#ffdc72' }
+    console.log(gradecolor)
     interaction.guild.roles.create({
       data: {
         name: grade,
@@ -28,7 +29,7 @@ module.exports = {
       reason: 'nowa klasa!',
     })
       .then(role => {
-
+        console.log(role)
 
 
         interaction.guild.channels.create({
@@ -163,7 +164,7 @@ module.exports = {
               }]
         })
       })
-      .catch(console.error);
+      .catch(error => {interaction.editReply(`coś zawiodło`); console.log(error)});
 
       interaction.editReply(`stworzono klasę ${grade}!`)
   },
