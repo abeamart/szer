@@ -31,7 +31,7 @@ module.exports = {
 
 
 
-        guild.channels.create({
+        interaction.guild.channels.create({
 
           name: `klasowy ${grade}`,
           type: ChannelType.GuildCategory,
@@ -158,7 +158,7 @@ module.exports = {
                 ]
               },
               {
-                id: guild.roles.everyone,
+                id: interaction.guild.roles.everyone,
                 deny: [PermissionsBitField.Flags.ViewChannel]
               }]
         })
