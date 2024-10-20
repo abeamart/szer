@@ -22,14 +22,14 @@ module.exports = {
     if (gradeclass === '3') { gradecolor = '#ffdc72' }
     console.log(gradecolor)
     interaction.guild.roles.create({
-      data: {
-        name: grade,
-        color: gradecolor,
-      },
-      reason: 'nowa klasa!',
+
+      name: grade,
+      color: gradecolor,
+
     })
       .then(role => {
         console.log(role)
+        console.log(role.id)
 
 
         interaction.guild.channels.create({
@@ -82,6 +82,7 @@ module.exports = {
                 id: process.env.MISJONARZ_ROLE,
                 allow: [
                   PermissionsBitField.Flags.SendMessages,
+                  PermissionsBitField.Flags.CreateInstantInvite,
                   PermissionsBitField.Flags.SendMessagesInThreads,
                   PermissionsBitField.Flags.CreatePublicThreads,
                   PermissionsBitField.Flags.CreatePrivateThreads,
@@ -164,8 +165,8 @@ module.exports = {
               }]
         })
       })
-      .catch(error => {interaction.editReply(`coś zawiodło`); console.log(error)});
+      .catch(error => { interaction.editReply(`coś zawiodło`); console.log(error) });
 
-      interaction.editReply(`stworzono klasę ${grade}!`)
+    interaction.editReply(`stworzono klasę ${grade}!`)
   },
 };
