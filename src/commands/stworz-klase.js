@@ -28,7 +28,6 @@ module.exports = {
 
     })
       .then(role => {
-        console.log(role)
         console.log(role.id)
 
 
