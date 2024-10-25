@@ -70,6 +70,7 @@ module.exports = {
                 PermissionsBitField.Flags.RequestToSpeak,
                 PermissionsBitField.Flags.CreateEvents,
                 PermissionsBitField.Flags.ManageEvents,
+                PermissionsBitField.Flags.SendPolls
                 ],
                 deny: [PermissionsBitField.Flags.ManageChannels,
                 PermissionsBitField.Flags.ManageRoles,
@@ -80,6 +81,7 @@ module.exports = {
               {
                 id: process.env.MISJONARZ_ROLE,
                 allow: [
+                  
                   PermissionsBitField.Flags.SendMessages,
                   PermissionsBitField.Flags.CreateInstantInvite,
                   PermissionsBitField.Flags.SendMessagesInThreads,
@@ -106,6 +108,7 @@ module.exports = {
                   PermissionsBitField.Flags.RequestToSpeak,
                   PermissionsBitField.Flags.CreateEvents,
                   PermissionsBitField.Flags.ManageEvents,
+                  PermissionsBitField.Flags.SendPolls
                 ],
                 deny: [PermissionsBitField.Flags.ManageChannels,
                 PermissionsBitField.Flags.ManageRoles,
@@ -138,6 +141,7 @@ module.exports = {
                   PermissionsBitField.Flags.UseApplicationCommands,
                   PermissionsBitField.Flags.UseEmbeddedActivities,
                   PermissionsBitField.Flags.RequestToSpeak,
+                  PermissionsBitField.Flags.SendPolls
 
                 ],
                 deny: [
@@ -162,7 +166,129 @@ module.exports = {
                 id: interaction.guild.roles.everyone,
                 deny: [PermissionsBitField.Flags.ViewChannel]
               }]
+        }).then(cat => {
+          interaction.guild.channels.create({
+
+            name: `klasowy`,
+            type: ChannelType.GuildText,
+            parent: cat
+          })
+          interaction.guild.channels.create({
+
+            name: `dyskusja`,
+            type: ChannelType.GuildText,
+            parent: cat
+          })
+          interaction.guild.channels.create({
+
+            name: `ogłoszenia`,
+            type: ChannelType.GuildAnnouncement,
+            parent: cat,
+            permissionOverwrites:
+            [
+              {
+                id: process.env.ADMIN_ROLE,
+                allow: [PermissionsBitField.Flags.CreateInstantInvite,
+                PermissionsBitField.Flags.SendMessages,
+                PermissionsBitField.Flags.SendMessagesInThreads,
+                PermissionsBitField.Flags.CreatePublicThreads,
+                PermissionsBitField.Flags.CreatePrivateThreads,
+                PermissionsBitField.Flags.EmbedLinks,
+                PermissionsBitField.Flags.AttachFiles,
+                PermissionsBitField.Flags.AddReactions,
+                PermissionsBitField.Flags.UseExternalEmojis,
+                PermissionsBitField.Flags.UseExternalStickers,
+                PermissionsBitField.Flags.MentionEveryone,
+                PermissionsBitField.Flags.ManageMessages,
+                PermissionsBitField.Flags.ManageThreads,
+                PermissionsBitField.Flags.ReadMessageHistory,
+                PermissionsBitField.Flags.SendTTSMessages,
+                PermissionsBitField.Flags.SendVoiceMessages,
+                PermissionsBitField.Flags.SendPolls,
+                PermissionsBitField.Flags.UseApplicationCommands,
+                PermissionsBitField.Flags.UseEmbeddedActivities,
+                
+                ],
+                deny: [PermissionsBitField.Flags.ManageChannels,
+                PermissionsBitField.Flags.ManageRoles,
+                PermissionsBitField.Flags.ManageWebhooks,
+
+                ]
+              },
+              {
+                id: process.env.MISJONARZ_ROLE,
+                allow: [
+                  PermissionsBitField.Flags.CreateInstantInvite,
+                PermissionsBitField.Flags.SendMessages,
+                PermissionsBitField.Flags.SendMessagesInThreads,
+                PermissionsBitField.Flags.CreatePublicThreads,
+                PermissionsBitField.Flags.CreatePrivateThreads,
+                PermissionsBitField.Flags.EmbedLinks,
+                PermissionsBitField.Flags.AttachFiles,
+                PermissionsBitField.Flags.AddReactions,
+                PermissionsBitField.Flags.UseExternalEmojis,
+                PermissionsBitField.Flags.UseExternalStickers,
+                PermissionsBitField.Flags.MentionEveryone,
+                PermissionsBitField.Flags.ManageMessages,
+                PermissionsBitField.Flags.ManageThreads,
+                PermissionsBitField.Flags.ReadMessageHistory,
+                PermissionsBitField.Flags.SendTTSMessages,
+                PermissionsBitField.Flags.SendVoiceMessages,
+                PermissionsBitField.Flags.SendPolls,
+                PermissionsBitField.Flags.UseApplicationCommands,
+                PermissionsBitField.Flags.UseEmbeddedActivities,
+                ],
+                deny: [PermissionsBitField.Flags.ManageChannels,
+                  PermissionsBitField.Flags.ManageRoles,
+                  PermissionsBitField.Flags.ManageWebhooks,
+  
+                ]
+              },
+              {
+                id: role.id,
+                allow: [
+                  PermissionsBitField.Flags.ViewChannel,
+                  PermissionsBitField.Flags.AddReactions,
+                  PermissionsBitField.Flags.UseExternalEmojis,
+                  PermissionsBitField.Flags.ReadMessageHistory,
+                ],
+                deny: [
+                  
+                  PermissionsBitField.Flags.SendTTSMessages,
+                  PermissionsBitField.Flags.SendVoiceMessages,
+                  PermissionsBitField.Flags.UseExternalSounds,
+                  PermissionsBitField.Flags.UseApplicationCommands,
+                  PermissionsBitField.Flags.UseEmbeddedActivities,
+                  PermissionsBitField.Flags.SendPolls,
+                  PermissionsBitField.Flags.UseExternalStickers,
+                  PermissionsBitField.Flags.MentionEveryone,
+                  PermissionsBitField.Flags.SendMessages,
+                  PermissionsBitField.Flags.EmbedLinks,
+                  PermissionsBitField.Flags.AttachFiles,
+                  PermissionsBitField.Flags.ManageChannels,
+                  PermissionsBitField.Flags.ManageRoles,
+                  PermissionsBitField.Flags.ManageWebhooks,
+                  PermissionsBitField.Flags.CreateInstantInvite,
+                  PermissionsBitField.Flags.SendMessagesInThreads,
+                  PermissionsBitField.Flags.CreatePublicThreads,
+                  PermissionsBitField.Flags.CreatePrivateThreads,
+                  PermissionsBitField.Flags.ManageMessages,
+                  PermissionsBitField.Flags.ManageThreads,
+                ]
+              },
+              {
+                id: interaction.guild.roles.everyone,
+                deny: [PermissionsBitField.Flags.ViewChannel]
+              }]
+          })
+          interaction.guild.channels.create({
+
+            name: `klasowy`,
+            type: ChannelType.GuildVoice,
+            parent: cat
+          })
         })
+
       })
       .catch(error => { interaction.editReply(`coś zawiodło`); console.log(error) });
 
